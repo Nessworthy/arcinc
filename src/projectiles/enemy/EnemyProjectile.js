@@ -9,6 +9,19 @@ class EnemyProjectile extends PIXI.Sprite{
         // Register event listener
         arcInc.eventEmitter.subscribe(Events.MOVEMENT_PHASE_STARTED,this.id, this.move.bind(this));
         arcInc.eventEmitter.subscribe(Events.CLEANUP_PHASE_STARTED,this.id, this.cleanup.bind(this));
+
+        let collisionEngine = arcInc.collisionEngine;
+        this.collisionEntity = collisionEngine.createPolygon(
+            this.x,
+            this.y,
+            [[-2,-8], [2,-8], [2,8], [-2,8]],
+            0,
+            arcInc.pixiApp.stage.scale.x,
+            arcInc.pixiApp.stage.scale.y,
+            0
+        );
+        this.collisionEntity.owner = this;
+
     }
 
     destructor() {
@@ -17,6 +30,7 @@ class EnemyProjectile extends PIXI.Sprite{
 
         let enemyProjectileContainer = arcInc.objectStore.get('enemyProjectileContainer');
         enemyProjectileContainer.removeChild(this);
+        this.collisionEntity.remove();
         this.destroy();
     }
 
@@ -33,7 +47,7 @@ class EnemyProjectile extends PIXI.Sprite{
         this.rotation = Math.atan2(vy, vx) - Math.PI/2;
 
         this.tint = tint;
-        this.damage = damage;
+        this.damage = 1;// damage;
 
         enemyProjectileContainer.addChild(this);
     }
@@ -45,6 +59,9 @@ class EnemyProjectile extends PIXI.Sprite{
         if (Utils.leftBoundsStrict(this)) {
             this.markedForDestruction = true;
         }
+
+        this.collisionEntity.x = this.x;
+        this.collisionEntity.y = this.y;
     }
 
     cleanup(frameDelta) {

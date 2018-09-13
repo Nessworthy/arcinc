@@ -228,9 +228,16 @@ class Player extends PIXI.Sprite {
 
         this.anchor.set(0.5, 0.5);
 
-        this.hitArea = new PIXI.Polygon([
-            0,0, 0,1, 1,1, 1,0
-        ]);
+        let collisionEngine = arcInc.collisionEngine;
+        this.collisionEntity = collisionEngine.createPolygon(
+            this.x,
+            this.y,
+            [[0, -20], [5,-11], [9, -9], [13, -12], [25, 20], [-25, 20], [-13, -12], [-9, -9], [-5, -11]],
+            0,
+            arcInc.pixiApp.stage.scale.x,
+            arcInc.pixiApp.stage.scale.y,
+            0
+        );
 
         this.applyUpgrades();
 
@@ -299,6 +306,8 @@ class Player extends PIXI.Sprite {
             if (this.y - this.height/2 < 0) {
                 this.y = this.height/2;
             }
+            this.collisionEntity.x = this.x;
+            this.collisionEntity.y = this.y;
         }
     }
 

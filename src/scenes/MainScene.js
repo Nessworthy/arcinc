@@ -19,6 +19,9 @@ class MainScene extends Scene{
         this.initGui();
         this.initAbilities();
         this.initPlayer();
+
+        this.graphics = new PIXI.Graphics();
+        this.addChild(this.graphics);
     }
 
     reset() {
@@ -77,8 +80,6 @@ class MainScene extends Scene{
         this.addChild(guiContainer);
         arcInc.objectStore.put('guiContainer', guiContainer);
     }
-
-
 
     initGui() {
         let guiContainer = arcInc.objectStore.get('guiContainer');
@@ -179,6 +180,8 @@ class MainScene extends Scene{
         player.scale.set(0.5);
         player.x = this.pixiApp.screen.width/this.pixiApp.stage.scale.x/2;
         player.y = this.pixiApp.screen.height/this.pixiApp.stage.scale.y - player.height * 2.5;
+        player.collisionEntity.x = player.x;
+        player.collisionEntity.y = player.y;
         playerContainer.addChild(player);
         arcInc.objectStore.put('player', player);
     }
@@ -196,6 +199,8 @@ class MainScene extends Scene{
 
         arcInc.eventEmitter.emit(Events.ENGAGEMENT_PHASE_STARTED, frameDelta);
 
+        arcInc.collisionEngine.update();
+
         arcInc.eventEmitter.emit(Events.COLLISION_DETECTION_PHASE_STARTED, frameDelta);
         this.checkForCollisions();
 
@@ -204,6 +209,11 @@ class MainScene extends Scene{
         this.particleEmitter.update();
         this.updateGui();
         arcInc.objectStore.get('abilityBar').update(frameDelta);
+
+        /*this.graphics.clear();
+        this.graphics.beginFill(0xFF0000, 0.75);
+        arcInc.collisionEngine.draw(this.graphics);
+        this.graphics.endFill();*/
     }
 
     updatePlayer(frameDelta) {
@@ -227,17 +237,20 @@ class MainScene extends Scene{
 
     checkForCollisions() {
         let player = arcInc.objectStore.get('player');
+        let playerCollisionEngine = player.collisionEntity;
 
-        let enemyProjectileContainer = arcInc.objectStore.get('enemyProjectileContainer');
-
-        for (let enemyProjectileIndex = 0; enemyProjectileIndex < enemyProjectileContainer.children.length; enemyProjectileIndex++) {
-            let enemyProjectile = enemyProjectileContainer.children[enemyProjectileIndex];
-            if (!enemyProjectile.markedForDestruction) {
-                if (Utils.intersect(player, enemyProjectile)) {
-                    player.hitBy(enemyProjectile);
+        let potentials = playerCollisionEngine.potentials();
+        for(let body of potentials) {
+            if(playerCollisionEngine.collides(body)) {
+                let enemyProjectile = body.owner;
+                if (!enemyProjectile.markedForDestruction) {
+                    if (Utils.intersect(player, enemyProjectile)) {
+                        player.hitBy(enemyProjectile);
+                    }
                 }
             }
         }
+
     }
 
     updateGui() {

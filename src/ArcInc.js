@@ -22,6 +22,7 @@ class ArcInc {
         loginScreen.classList.add('d-none');
 
         this.initPixiApp();
+        this.initCollisionEngine();
         this.initSavegame();
         this.initKeyboard();
         this.initScenes();
@@ -91,6 +92,10 @@ class ArcInc {
         });
 
         arcInc.spawner = new Spawner(this.pixiApp, this.objectStore);
+    }
+
+    initCollisionEngine() {
+        arcInc.collisionEngine = new Collisions();
     }
 
     initPage() {

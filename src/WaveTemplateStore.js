@@ -7,6 +7,7 @@ class WaveTemplateStore {
         {
             wavesToSpawn = arcInc.antimatterTalents.waveCompressionStrength;
         }
+
         let targetWave = lastWave + wavesToSpawn;
 
         arcInc.sceneManager.scenes['main'].wave += wavesToSpawn;
@@ -31,9 +32,21 @@ class WaveTemplateStore {
         for (let i = mask.length - 1; i >= 0; i--) {
             for (let j = 0; j < mask[i].length; j++) {
                 if (mask[i][j] === "*") {
-                    let frame = ((mask.length) - i) * (300/(mask.length));
+                    let frame = ((mask.length) - i) * (50/(mask.length));
                     let x = 1 / (mask[i].length+1) * (j+1);
-                    keyFrames.push(new KeyFrame(frame, {"operation": "spawnEnemy", "reference": type + ((j + 1) * (i + 1)), "type": type, "wave": targetWave, "scalingFactor": wavesToSpawn, "x": x, "y": -0.25, "vx": 0, "vy": 2}));
+                    for(let n = 1; n < 50; n += 1) {
+                        keyFrames.push(new KeyFrame(frame + (n * 5), {
+                            "operation": "spawnEnemy",
+                            "reference": type + ((j + 1) * (i + 1)),
+                            "type": type,
+                            "wave": targetWave,
+                            "scalingFactor": wavesToSpawn,
+                            "x": x,
+                            "y": -0.25,
+                            "vx": 0,
+                            "vy": 2
+                        }));
+                    }
                 }
             }
         }
@@ -68,8 +81,8 @@ class WaveTemplateStore {
     };*/
 
     static template(wave) {
-        let type = ["crawler", "industrialMiner", "suicideBomber"];
-        return WaveTemplateStore.fromBitMask(Formation.formations[Math.floor(Math.random() * Formation.formations.length)],
+        let type = ["industrialMiner"];
+        return WaveTemplateStore.fromBitMask(Formation.formations[0],
             type[Math.floor(Math.random() * type.length)],
             wave);
     };
