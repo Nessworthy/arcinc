@@ -27,7 +27,7 @@ class Player extends PIXI.Sprite {
                 "title": "Projectile Damage",
                 "cost": 5e7,
                 "growthFactor": arcInc.growth,
-                "description": "Increases your ship\"s weapon damage.",
+                "description": "Increases your ship's weapon damage.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "modules", "name": "factory", "level": 1}]
             },
@@ -52,7 +52,7 @@ class Player extends PIXI.Sprite {
                 "title": "Cluster Ammunition",
                 "cost": 5e12,
                 "growthFactor": arcInc.growth,
-                "description": "Increases your ship\"s weapon damage.",
+                "description": "Increases your ship's weapon damage.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "upgrades", "name": "projectileDamage", "level": 1}]
             },
@@ -60,7 +60,7 @@ class Player extends PIXI.Sprite {
                 "title": "Tactical Warhead",
                 "cost": 1e30,
                 "growthFactor": arcInc.growth,
-                "description": "Increases your ship\"s weapon damage.",
+                "description": "Increases your ship's weapon damage.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "upgrades", "name": "projectileDamage", "level": 1}]
             },
@@ -79,7 +79,7 @@ class Player extends PIXI.Sprite {
                 "title": "Projectile Amount",
                 "cost": 5e4,
                 "growthFactor": arcInc.growth,
-                "description": "Increases the amount of projectiles to up to 5. Subsequent levels increase your ship\"s weapon damage further instead.",
+                "description": "Increases the amount of projectiles to up to 5. Subsequent levels increase your ship's weapon damage further instead.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "upgrades", "name": "rateOfFire", "level": 1}]
             },
@@ -87,7 +87,7 @@ class Player extends PIXI.Sprite {
                 "title": "Projectile Pierce Chance",
                 "cost": 5e4,
                 "growthFactor": arcInc.growth,
-                "description": "Increases the chance your ship\"s projectiles pierce through enemy ships. Can not hit the same enemy multiple times.",
+                "description": "Increases the chance your ship's projectiles pierce through enemy ships. Can not hit the same enemy multiple times.",
                 "effectTemplate": "{EFFECT}% chance",
                 "cap": 400,
                 "requirements": [{"type": "upgrades", "name": "projectileAmount", "level": 1}]
@@ -96,7 +96,7 @@ class Player extends PIXI.Sprite {
                 "title": "Projectile Fork Chance",
                 "cost": 5e5,
                 "growthFactor": arcInc.growth,
-                "description": "Increases the chance your ship\"s projectiles split into 3 on impact. Can not hit the same enemy multiple times.",
+                "description": "Increases the chance your ship's projectiles split into 3 on impact. Can not hit the same enemy multiple times.",
                 "effectTemplate": "{EFFECT}% chance",
                 "cap": 400,
                 "requirements": [{"type": "upgrades", "name": "projectilePierceChance", "level": 1}]
@@ -115,7 +115,7 @@ class Player extends PIXI.Sprite {
                 "title": "Shield Amount",
                 "cost": 5e4,
                 "growthFactor": arcInc.growth,
-                "description": "Increases the amount of damage your ship\"s shields can sustain.",
+                "description": "Increases the amount of damage your ship's shields can sustain.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "modules", "name": "factory", "level": 1}]
             },
@@ -123,7 +123,7 @@ class Player extends PIXI.Sprite {
                 "title": "Shield Recharge",
                 "cost": 5e2,
                 "growthFactor": arcInc.growth,
-                "description": "Improves how fast your ship\"s shields repair themselves.",
+                "description": "Improves how fast your ship's shields repair themselves.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "upgrades", "name": "maxShield", "level": 1}]
             },
@@ -131,7 +131,7 @@ class Player extends PIXI.Sprite {
                 "title": "Shield Recharge Accelerator",
                 "cost": 5e6,
                 "growthFactor": arcInc.growth,
-                "description": "Significantly increases your ship\"s shield repair rate after not taking damage for 3 seconds.",
+                "description": "Significantly increases your ship's shield repair rate after not taking damage for 3 seconds.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "upgrades", "name": "shieldRechargeTime", "level": 1}]
             },
@@ -139,7 +139,7 @@ class Player extends PIXI.Sprite {
                 "title": "Plasma Field",
                 "cost": 1e9,
                 "growthFactor": arcInc.growth,
-                "description": "Increases the amount of damage your ship\"s shields can sustain.",
+                "description": "Increases the amount of damage your ship's shields can sustain.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "upgrades", "name": "maxShield", "level": 1}]
             },
@@ -147,7 +147,7 @@ class Player extends PIXI.Sprite {
                 "title": "Overshield Chance",
                 "cost": 1e9,
                 "growthFactor": arcInc.growth,
-                "description": "Chance that a hit is fully absorbed by your ship\"s shield without affecting armor. " +
+                "description": "Chance that a hit is fully absorbed by your ship's shield without affecting armor. " +
                     "Requires your shield to be full to trigger and will deplete the whole shield bar.",
                 "effectTemplate": "{EFFECT}% chance",
                 "cap": 400,
@@ -159,7 +159,7 @@ class Player extends PIXI.Sprite {
                 "title": "Armor Amount",
                 "cost": 5e4,
                 "growthFactor": arcInc.growth,
-                "description": "Increases your ship\"s maximum armor.",
+                "description": "Increases your ship's maximum armor.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "modules", "name": "factory", "level": 1}]
             },
@@ -176,7 +176,7 @@ class Player extends PIXI.Sprite {
                 "title": "Titanium Alloy",
                 "cost": 1e9,
                 "growthFactor": arcInc.growth,
-                "description": "Increases your ship\"s maximum armor.",
+                "description": "Increases your ship's maximum armor.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "upgrades", "name": "maxArmor", "level": 1}]
             },
@@ -186,7 +186,7 @@ class Player extends PIXI.Sprite {
                 "title": "Life Support Systems",
                 "cost": 1e30,
                 "growthFactor": arcInc.growth,
-                "description": "Improves both your ship\"s shield and armor.",
+                "description": "Improves both your ship's shield and armor.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "modules", "name": "factory", "level": 1}]
             },
@@ -206,7 +206,7 @@ class Player extends PIXI.Sprite {
                 "title": "Movement Speed",
                 "cost": 5e2,
                 "growthFactor": arcInc.growth,
-                "description": "Improves your ship\"s movement speed and handling.",
+                "description": "Improves your ship's movement speed and handling.",
                 "effectTemplate": "{EFFECT} pixel/tick",
                 "requirements": [{"type": "modules", "name": "factory", "level": 1}]
             },
@@ -214,7 +214,7 @@ class Player extends PIXI.Sprite {
                 "title": "Salvager",
                 "cost": 5e10,
                 "growthFactor": arcInc.growth,
-                "description": "Profit from your enemies\" misfortune! Increases your money earned per kill.",
+                "description": "Profit from your enemies' misfortune! Increases your money earned per kill.",
                 "effectTemplate": "{EFFECT}x multiplier",
                 "requirements": [{"type": "upgrades", "name": "movementSpeed", "level": 1}]
             }
