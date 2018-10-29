@@ -105,6 +105,12 @@ table {
     box-shadow: 0 1px 0 1px #141852 inset;
 }
 
+@media screen and (max-width:1024px) {
+    .card-upgrade-container {
+        flex-flow: column nowrap;
+    }
+}
+
 * {
     font-size: 12px;
     line-height: 1.25;

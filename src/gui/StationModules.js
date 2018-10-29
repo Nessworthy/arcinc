@@ -9,7 +9,7 @@ class StationModules {
 
             if (i%2 === 0) {
                 cardDeck = document.createElement('div');
-                cardDeck.classList.add('card-deck');
+                cardDeck.classList.add('card-deck', 'card-upgrade-container');
                 categoryCardBody.appendChild(cardDeck);
             }
 
